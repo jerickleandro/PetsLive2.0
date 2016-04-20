@@ -13,7 +13,7 @@ import javax.faces.bean.RequestScoped;
  *
  * @author Erick
  */
-@ManagedBean
+@ManagedBean (name = "bAnimal")
 @RequestScoped
 public class BuilderAnimal {
     private int id_animal;
