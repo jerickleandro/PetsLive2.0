@@ -38,26 +38,11 @@
                     
                     </p:panelGrid>
                     
-                     <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"
-                         /> 
-        </p:fieldset>
+                     <p:commandButton value="Cadastrar" action="#{controleAnimal.inserirAnimal(bAnimal.builderAnimal())}"/> 
+                     <p:commandButton value="Limpar Campos" type="reset"/>
+         </p:fieldset>
          
-            <p:dialog id="painel" resizable="false" closable="false" visible="false"
-                      modal="true" widgetVar="painel">
-                <f:facet name="header">
-                    Atenção!!!
-                </f:facet>
-                <h:outputText value="Você deseja realmente cadastrar?"/><br/>
-                <p:commandButton value="sim" action="#{controleAnimal.inserirAnimal(bAnimal.builderAnimal())}"
-                                 oncomplete="PF('painel').hide()" update="formularioDeAnimal"/>
-                <p:commandButton value="não" oncomplete="PF('painel').hide()"/>
-            </p:dialog>
             
-            <!--<p:confirmDialog id="panel2" closable="false" visible="false" widgetVar="painel2"
-                             message="Cliente cadastrado com sucesso">
-                <p:commandButton value="OK" oncomplete="location.href='index.xhtml'"/>
-            </p:confirmDialog>-->
-            <p:messages/>
              
                 
             </h:form>
