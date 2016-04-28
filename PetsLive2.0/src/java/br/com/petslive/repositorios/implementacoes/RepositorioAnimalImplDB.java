@@ -30,8 +30,10 @@ public class RepositorioAnimalImplDB implements RepositorioGenerico<Animal, Inte
 
     @Override
     public Animal recuperar(Integer g) {
+        
         return ((Animal)dao.recover("from Animal where id_animal="+g).get(0));
-    }
+        
+        }
     
     public void deletar(Animal t){
         dao.delete(t);

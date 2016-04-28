@@ -5,6 +5,7 @@
  */
 package br.com.petslive.negocio;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,8 +16,8 @@ import javax.persistence.Table;
  * @author Erick
  */
 @Entity
-@Table
-public class Animal {
+@Table (name = "Animal")
+public class Animal{
     @Id
     @Column (name = "id_animal",nullable = false)
     private int id_animal;
@@ -40,7 +41,7 @@ public class Animal {
         this.sexo = sexo;
         
     }
-    
+    @Deprecated
     public Animal(){
     }
     

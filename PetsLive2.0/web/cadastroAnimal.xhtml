@@ -38,7 +38,7 @@
                     
                     </p:panelGrid>
                     
-                     <p:commandButton value="Cadastrar" action="#{controleAnimal.inserirAnimal(bAnimal.builderAnimal())}"/> 
+             <p:commandButton value="Cadastrar" action="#{controleAnimal.inserirAnimal(bAnimal.builderAnimal())}" update="formularioDeAnimal" /> 
                      <p:commandButton value="Limpar Campos" type="reset"/>
          </p:fieldset>
          

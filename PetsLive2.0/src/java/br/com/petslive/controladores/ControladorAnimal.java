@@ -6,10 +6,13 @@
 package br.com.petslive.controladores;
 
 import br.com.petslive.negocio.Animal;
+import br.com.petslive.repositorios.implementacoes.RepositorioAnimalImplDB;
 import br.com.petslive.repositorios.interfaces.RepositorioGenerico;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 
 
@@ -24,11 +27,16 @@ public class ControladorAnimal {
     private RepositorioGenerico<Animal, Integer> repositorioAnimal = null;
     private Animal selectedAnimal = null;        
             
-            
+    public ControladorAnimal(){
+        this.repositorioAnimal = new RepositorioAnimalImplDB();
+    }        
             
             
     public void inserirAnimal(Animal a){
         this.repositorioAnimal.inserir(a);
+         FacesContext.getCurrentInstance().
+                addMessage(null, new FacesMessage("parabéns", "O Animal "+a.getNome_animal() +" "
+                        + "foi cadastrado com sucesso!"));
     }
     public void alterarAnimal(Animal a){
         this.repositorioAnimal.alterar(a);
