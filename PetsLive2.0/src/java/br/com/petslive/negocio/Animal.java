@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,7 +21,6 @@ import javax.persistence.Table;
 @Table (name = "Animal")
 public class Animal{
     @Id
-    @GeneratedValue
     @Column (name = "id_animal",nullable = false)
     private int id_animal;
     @Column (name = "nome_animal", nullable = false, length = 100)
