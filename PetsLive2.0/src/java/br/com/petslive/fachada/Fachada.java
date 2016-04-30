@@ -6,6 +6,7 @@
 package br.com.petslive.fachada;
 
 import br.com.petslive.negocio.Animal;
+import br.com.petslive.repositorios.implementacoes.FabricaRepositorio;
 import br.com.petslive.repositorios.implementacoes.RepositorioAnimalImplDB;
 import br.com.petslive.repositorios.interfaces.RepositorioGenerico;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Fachada {
     private RepositorioGenerico<Animal, Integer> repositorioAnimal = null;
     private static Fachada mySelf = null;
     private Fachada(){
-    this.repositorioAnimal = new RepositorioAnimalImplDB();
+    this.repositorioAnimal = FabricaRepositorio.criarRepositorio(FabricaRepositorio.ANIMAL, FabricaRepositorio.DB);
     }
     public static Fachada getInstance(){
         if(mySelf == null)
@@ -29,7 +30,7 @@ public class Fachada {
     public void inserirAnimal(Animal a){
         this.repositorioAnimal.inserir(a);
     }
-    public void alterarAnimal(Animal a){
+    public void alterarAnimal(Animal a) throws Exception{
         this.repositorioAnimal.alterar(a);
     }
     public Animal recuperarAnimal(Integer id){

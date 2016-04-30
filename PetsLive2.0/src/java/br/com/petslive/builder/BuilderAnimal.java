@@ -22,7 +22,11 @@ public class BuilderAnimal {
     private String raca;
     private int idade;
     private char sexo;
-
+    
+    @Deprecated
+    public BuilderAnimal(){}
+    
+    
     /**
      * @return the id_animal
      */

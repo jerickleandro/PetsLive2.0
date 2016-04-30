@@ -38,15 +38,24 @@
                     
                     </p:panelGrid>
                     
-             <p:commandButton value="Cadastrar" action="#{controleAnimal.inserirAnimal(bAnimal.builderAnimal())}" update="formularioDeAnimal" /> 
+             <p:commandButton value="Cadastrar"  oncomplete="PF('widConfirmaCadastroAnimal').show()" /> 
                      <p:commandButton value="Limpar Campos" type="reset"/>
          </p:fieldset>
+             
+             
+             <p:confirmDialog id="idConfirmaCadastroAnimal" visible="false" message="Deseja cadastrar o animal com essas informações?" widgetVar="widConfirmaCadastroAnimal">
+                 <f:facet name="header">
+                     Confirmação!!!
+                 </f:facet>
+                 <p:commandButton value="Sim" action="#{controleAnimal.inserirAnimal(bAnimal.builderAnimal())}" oncomplete="PF('widConfirmaCadastroAnimal').hide()" update="formularioDeAnimal"/>
+                 <p:commandButton value="Não" oncomplete="PF('widConfirmaCadastroAnimal').hide()"/>
+             </p:confirmDialog>
          
             
              
                 
             </h:form>
-        
+        <p:growl id="gro" sticky="false" life="3000"/>
         
     </h:body>
 </html>

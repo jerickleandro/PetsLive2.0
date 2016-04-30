@@ -24,15 +24,17 @@ public class RepositorioAnimalImplDB implements RepositorioGenerico<Animal, Inte
     }
 
     @Override
-    public void alterar(Animal t) {
+    public void alterar(Animal t) throws Exception{
         dao.update(t);
     }
 
     @Override
     public Animal recuperar(Integer g) {
-        
+        try{
         return ((Animal)dao.recover("from Animal where id_animal="+g).get(0));
-        
+        }catch(IndexOutOfBoundsException  ex){
+            return null;
+        }
         }
     
     public void deletar(Animal t){

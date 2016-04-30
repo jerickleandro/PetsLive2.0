@@ -6,13 +6,17 @@
 package br.com.petslive.controladores;
 
 import br.com.petslive.negocio.Animal;
+import br.com.petslive.repositorios.implementacoes.FabricaRepositorio;
 import br.com.petslive.repositorios.implementacoes.RepositorioAnimalImplDB;
 import br.com.petslive.repositorios.interfaces.RepositorioGenerico;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import sun.util.logging.PlatformLogger;
 
 
 
@@ -28,18 +32,23 @@ public class ControladorAnimal {
     private Animal selectedAnimal = null;        
             
     public ControladorAnimal(){
-        this.repositorioAnimal = new RepositorioAnimalImplDB();
+        this.repositorioAnimal =FabricaRepositorio.criarRepositorio(FabricaRepositorio.ANIMAL, FabricaRepositorio.DB);
     }        
             
             
-    public void inserirAnimal(Animal a){
+    public String inserirAnimal(Animal a){
         this.repositorioAnimal.inserir(a);
          FacesContext.getCurrentInstance().
                 addMessage(null, new FacesMessage("parabéns", "O Animal "+a.getNome_animal() +" "
                         + "foi cadastrado com sucesso!"));
+         return "cadastroAnimal.xhtml";
     }
-    public void alterarAnimal(Animal a){
+    public void alterarAnimal(Animal a) throws Exception{
+        try{
         this.repositorioAnimal.alterar(a);
+        }catch(Exception ex){
+            Logger.getLogger(ControladorAnimal.class.getName()).log(Level.SEVERE,null,ex);
+        }
     }
     public Animal recuperarAnimal(Integer id){
         return this.repositorioAnimal.recuperar(id);

@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface RepositorioGenerico <T,G> {
     public void inserir(T t);
-    public void alterar(T t);
+    public void alterar(T t) throws Exception;
     public T recuperar(G g);
     public void deletar(T t);
     public List<T> listarTodos();
