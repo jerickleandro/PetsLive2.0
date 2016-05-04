@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Todos animais</title>
+    </h:head>
+    <h:body>
+        <p:dataTable id="tabelaAnimal" value="#{controleAnimal.animal}" var="ani" emptyMessage="Nenhum registro incluido" paginator="true" rows="10">
+            <f:facet name="header">
+                Lista de Animais
+            </f:facet>
+            <p:column headerText="Nome do animal:" style="text-align: center">
+                <h:outputText value="#{ani.nome_animal}"/>
+            </p:column>
+            <p:column headerText="ALTERAR - EXCLUIR" style="text-align: center"></p:column>
+            <p:commandButton action="#{controleAnimal}"
+        </p:dataTable>
+    </h:body>
+</html>
+

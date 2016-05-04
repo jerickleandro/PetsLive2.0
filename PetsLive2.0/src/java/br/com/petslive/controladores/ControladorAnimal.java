@@ -9,6 +9,7 @@ import br.com.petslive.negocio.Animal;
 import br.com.petslive.repositorios.implementacoes.FabricaRepositorio;
 import br.com.petslive.repositorios.implementacoes.RepositorioAnimalImplDB;
 import br.com.petslive.repositorios.interfaces.RepositorioGenerico;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,10 +30,13 @@ import sun.util.logging.PlatformLogger;
 public class ControladorAnimal {
     
     private RepositorioGenerico<Animal, Integer> repositorioAnimal = null;
-    private Animal selectedAnimal = null;        
+    private Animal selectedAnimal = null; 
+    private ArrayList<Animal> animal; 
             
     public ControladorAnimal(){
         this.repositorioAnimal =FabricaRepositorio.criarRepositorio(FabricaRepositorio.ANIMAL, FabricaRepositorio.DB);
+    
+    animal = new ArrayList<Animal>();
     }        
             
             
