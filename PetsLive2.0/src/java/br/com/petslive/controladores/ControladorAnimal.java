@@ -45,7 +45,7 @@ public class ControladorAnimal {
          FacesContext.getCurrentInstance().
                 addMessage(null, new FacesMessage("parabéns", "O Animal "+a.getNome_animal() +" "
                         + "foi cadastrado com sucesso!"));
-         return "cadastroAnimal.xhtml";
+         return "listaAnimais.xhtml";
     }
     public void alterarAnimal(Animal a) throws Exception{
         try{

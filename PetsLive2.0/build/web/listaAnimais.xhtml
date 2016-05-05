@@ -3,20 +3,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Todos animais</title>
     </h:head>
     <h:body>
-        <p:dataTable id="tabelaAnimal" value="#{controleAnimal.animal}" var="ani" emptyMessage="Nenhum registro incluido" paginator="true" rows="10">
+        <ui:include src="index.xhtml"/>
+        
+        
+        <p:dataTable id="tabelaAnimal" value="#{controleAnimal.listarTodos()}" var="ani" emptyMessage="Nenhum registro incluido" paginator="true" rows="10">
             <f:facet name="header">
                 Lista de Animais
             </f:facet>
+           <p:column headerText="Id:" style="text-align: center">
+               <h:outputText value="#{ani.id_animal}"/>
+            </p:column>
             <p:column headerText="Nome do animal:" style="text-align: center">
                 <h:outputText value="#{ani.nome_animal}"/>
             </p:column>
-            <p:column headerText="ALTERAR - EXCLUIR" style="text-align: center"></p:column>
-            <p:commandButton action="#{controleAnimal}"
+            <p:column headerText="Idade:" style="text-align: center">
+                <h:outputText value="#{ani.idade}"/>
+            </p:column>
+            <p:column headerText="Especie:" style="text-align: center">
+                <h:outputText value="#{ani.especie}"/>
+            </p:column>
+            <p:column headerText="Raça:" style="text-align: center">
+                <h:outputText value="#{ani.raca}"/>
+            </p:column>
+            <p:column headerText="Sexo:" style="text-align: center">
+                <h:outputText value="#{ani.sexo}"/>
+            </p:column>
+            
+            <!--<p:column headerText="ALTERAR - EXCLUIR" style="text-align: center"></p:column>
+            <p:commandButton action="#{controleAnimal}" -->
         </p:dataTable>
     </h:body>
 </html>

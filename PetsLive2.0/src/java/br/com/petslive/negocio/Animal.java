@@ -21,6 +21,7 @@ import javax.persistence.Table;
 @Table (name = "Animal")
 public class Animal{
     @Id
+    @GeneratedValue
     @Column (name = "id_animal",nullable = false)
     private int id_animal;
     @Column (name = "nome_animal", nullable = false, length = 100)
