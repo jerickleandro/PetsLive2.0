@@ -43,7 +43,7 @@ public class ControladorAnimal {
     public String inserirAnimal(Animal a){
         this.repositorioAnimal.inserir(a);
          FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage("parabéns", "O Animal "+a.getNome_animal() +" "
+                addMessage(null, new FacesMessage("parabéns"+ "\n"+ "O Animal "+a.getNome_animal() +" "
                         + "foi cadastrado com sucesso!"));
          return "listaAnimais.xhtml";
     }

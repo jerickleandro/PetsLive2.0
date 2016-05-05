@@ -9,35 +9,37 @@
         <title>Todos animais</title>
     </h:head>
     <h:body>
-        <ui:include src="index.xhtml"/>
-        
-        
-        <p:dataTable id="tabelaAnimal" value="#{controleAnimal.listarTodos()}" var="ani" emptyMessage="Nenhum registro incluido" paginator="true" rows="10">
-            <f:facet name="header">
-                Lista de Animais
-            </f:facet>
-           <p:column headerText="Id:" style="text-align: center">
-               <h:outputText value="#{ani.id_animal}"/>
-            </p:column>
-            <p:column headerText="Nome do animal:" style="text-align: center">
-                <h:outputText value="#{ani.nome_animal}"/>
-            </p:column>
-            <p:column headerText="Idade:" style="text-align: center">
-                <h:outputText value="#{ani.idade}"/>
-            </p:column>
-            <p:column headerText="Especie:" style="text-align: center">
-                <h:outputText value="#{ani.especie}"/>
-            </p:column>
-            <p:column headerText="Raça:" style="text-align: center">
-                <h:outputText value="#{ani.raca}"/>
-            </p:column>
-            <p:column headerText="Sexo:" style="text-align: center">
-                <h:outputText value="#{ani.sexo}"/>
-            </p:column>
-            
-            <!--<p:column headerText="ALTERAR - EXCLUIR" style="text-align: center"></p:column>
-            <p:commandButton action="#{controleAnimal}" -->
-        </p:dataTable>
+        <p:growl id="gro" sticky="false" life="3000"/>
+        <ui:include src="headerEMenu.xhtml"/>
+
+        <h:form id="formularioListaAnimal">
+            <p:dataTable id="tabelaAnimal" value="#{controleAnimal.listarTodos()}" var="ani" emptyMessage="Nenhum registro incluido" paginator="true" rows="10" rowKey="#{ani.id_animal}" selectionMode="single" selection="#{controleAnimal.selectedAnimal}">
+                <f:facet name="header">
+                    Animais Cadastrados
+                </f:facet>
+                <p:column headerText="Id:" style="text-align: center">
+                    <h:outputText value="#{ani.id_animal}"/>
+                </p:column>
+                <p:column headerText="Nome do animal:" style="text-align: center" sortBy="#{ani.nome_animal}">
+                    <h:outputText value="#{ani.nome_animal}"/>
+                </p:column>
+                <p:column headerText="Idade:" style="text-align: center" sortBy="#{ani.idade}">
+                    <h:outputText value="#{ani.idade}"/>
+                </p:column>
+                <p:column headerText="Especie:" style="text-align: center" sortBy="#{ani.especie}">
+                    <h:outputText value="#{ani.especie}"/>
+                </p:column>
+                <p:column headerText="Raça:" style="text-align: center" sortBy="#{ani.raca}">
+                    <h:outputText value="#{ani.raca}"/>
+                </p:column>
+                <p:column headerText="Sexo:" style="text-align: center" sortBy="#{ani.sexo}">
+                    <h:outputText value="#{ani.sexo}"/>
+                </p:column>
+
+                <!--<p:column headerText="ALTERAR - EXCLUIR" style="text-align: center"></p:column>
+                <p:commandButton action="#{controleAnimal}" -->
+            </p:dataTable>
+        </h:form>
     </h:body>
 </html>
 

@@ -9,8 +9,13 @@
     </h:head>
     <h:body>
         <ui:include src="headerEMenu.xhtml"/>
-         <p:separator/>
-        
+        <p:separator/>
+        <center>
+            <p:galleria value="#{controleSlide1.images}" var="image" panelWidth="750" panelHeight="500" showCaption="true" effectSpeed="2000" >
+                <p:graphicImage name="images/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+        </p:galleria> 
+           
+            </center>
     </h:body>
 </html>
 
