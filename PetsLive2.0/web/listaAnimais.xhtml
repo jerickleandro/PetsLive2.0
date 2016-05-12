@@ -13,7 +13,7 @@
         <ui:include src="headerEMenu.xhtml"/>
 
         <h:form id="formularioListaAnimal">
-            <p:dataTable id="tabelaAnimal" value="#{controleAnimal.listarTodos()}" var="ani" emptyMessage="Nenhum registro incluido" paginator="true" rows="10" rowKey="#{ani.id_animal}" selectionMode="single" selection="#{controleAnimal.selectedAnimal}">
+            <p:dataTable id="tabelaAnimal" value="#{controleAnimal.listarTodos()}" var="ani" emptyMessage="Nenhum registro incluido" paginator="true" rows="10" rowKey="#{ani.id_animal}" selectionMode="single" >
                 <f:facet name="header">
                     Animais Cadastrados
                 </f:facet>
@@ -35,11 +35,28 @@
                 <p:column headerText="Sexo:" style="text-align: center" sortBy="#{ani.sexo}">
                     <h:outputText value="#{ani.sexo}"/>
                 </p:column>
-
-                <!--<p:column headerText="ALTERAR - EXCLUIR" style="text-align: center"></p:column>
-                <p:commandButton action="#{controleAnimal}" -->
+                <p:column headerText="" style="text-align: center" >
+                    <p:commandButton value="Excluir" oncomplete="PF('widDial').show()" >
+                        <f:setPropertyActionListener target="#{controleAnimal.selectedAnimal}" value="#{ani}"/> 
+                    </p:commandButton>
+                </p:column>
+                
             </p:dataTable>
+        
+      <p:confirmDialog id="idDial" visible="false" message="Deseja realmente Excluir?"
+                             widgetVar="widDial">
+                <f:facet name="header">
+                    Atenção!!!
+                </f:facet>
+          <p:commandButton value="sim" action="#{controleAnimal.deletarAnimal(controleAnimal.selectedAnimal)}"
+                                 oncomplete="PF('widDial').hide()" update="formularioListaAnimal"
+                                 />
+                    <p:commandButton value="não" oncomplete="PF('widDial').hide()"/>
+            </p:confirmDialog>
+        
+        
         </h:form>
+     
     </h:body>
 </html>
 
