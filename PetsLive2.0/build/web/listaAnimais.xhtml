@@ -36,24 +36,40 @@
                     <h:outputText value="#{ani.sexo}"/>
                 </p:column>
                 <p:column headerText="" style="text-align: center" >
-                    <p:commandButton value="Excluir" oncomplete="PF('widDial').show()" >
+                    <p:commandButton value="Excluir" oncomplete="PF('widDialExcluir').show()" >
+                        <f:setPropertyActionListener target="#{controleAnimal.selectedAnimal}" value="#{ani}"/> 
+                    </p:commandButton>
+                    <p:commandButton value="Alterar" oncomplete="PF('widDialAlterar').show()" >
                         <f:setPropertyActionListener target="#{controleAnimal.selectedAnimal}" value="#{ani}"/> 
                     </p:commandButton>
                 </p:column>
                 
+                
             </p:dataTable>
         
-      <p:confirmDialog id="idDial" visible="false" message="Deseja realmente Excluir?"
-                             widgetVar="widDial">
+      <p:confirmDialog id="idDialExcluir" visible="false" message="Deseja realmente Excluir?"
+                             widgetVar="widDialExcluir">
                 <f:facet name="header">
                     Atenção!!!
                 </f:facet>
-          <p:commandButton value="sim" action="#{controleAnimal.deletarAnimal(controleAnimal.selectedAnimal)}"
-                                 oncomplete="PF('widDial').hide()" update="formularioListaAnimal"
+          <p:commandButton  value="sim" action="#{controleAnimal.deletarAnimal(controleAnimal.selectedAnimal)}"
+                                 oncomplete="PF('widDialExcluir').hide()" update="formularioListaAnimal"
                                  />
-                    <p:commandButton value="não" oncomplete="PF('widDial').hide()"/>
-            </p:confirmDialog>
+                    <p:commandButton value="não" oncomplete="PF('widDialExcluir').hide()"/>
+            
+      </p:confirmDialog>
         
+            <p:confirmDialog id="idDialAlterar" visible="false" message="Deseja alterar?"
+                             widgetVar="widDialAlterar">
+                <p:panelGrid columns="2">
+                    
+                </p:panelGrid>
+                <p:commandButton  value="Concluir" action="#{controleAnimal.alterarAnimal(controleAnimal.selectedAnimal)}"
+                                 oncomplete="PF('widDialAlterar').hide()" update="formularioListaAnimal"
+                                 />
+                    <p:commandButton value="Voltar" oncomplete="PF('widDialAlterar').hide()"/>
+            
+      </p:confirmDialog>
         
         </h:form>
      
