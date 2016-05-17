@@ -122,7 +122,8 @@ public class DaoManagerHiber {
         return l;
     }
     
-    public void update(Object o){
+    
+   public void update(Object o){
         Transaction tr = null;
         try{
            

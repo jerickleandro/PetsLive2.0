@@ -43,16 +43,20 @@ public class ControladorAnimal {
     public String inserirAnimal(Animal a){
         this.repositorioAnimal.inserir(a);
          FacesContext.getCurrentInstance().
-                addMessage(null, new FacesMessage("parabéns"+ "\n"+ "O Animal "+a.getNome_animal() +" "
+                addMessage(null, new FacesMessage("Parabéns!"+ "\n"+ "O Animal "+a.getNome_animal() +" "
                         + "foi cadastrado com sucesso!"));
          return "listaAnimais.xhtml";
     }
-    public void alterarAnimal(Animal a) throws Exception{
+    public String alterarAnimal(Animal a) throws Exception{
         try{
         this.repositorioAnimal.alterar(a);
+        FacesContext.getCurrentInstance().
+                addMessage(null, new FacesMessage("Parabéns!"+ "\n"+ "O Animal "+a.getNome_animal() +" "
+                        + "foi alterado com sucesso!"));
         }catch(Exception ex){
             Logger.getLogger(ControladorAnimal.class.getName()).log(Level.SEVERE,null,ex);
         }
+        return "listaAnimais.xhtml";
     }
     public Animal recuperarAnimal(Integer id){
         return this.repositorioAnimal.recuperar(id);
