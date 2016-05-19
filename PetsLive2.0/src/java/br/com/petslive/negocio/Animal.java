@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,7 +25,7 @@ public class Animal{
     @GeneratedValue
     @Column (name = "id_animal",nullable = false)
     private int id_animal;
-    @Column (name = "nome_animal", nullable = false, length = 100)
+    @Column (name = "nome_animal", nullable = false, length = 50)
     private String nome_animal;
     @Column (name = "especie", length = 50)
     private String especie;
@@ -34,14 +35,17 @@ public class Animal{
     private int idade;
     @Column (name = "sexo")
     private char sexo;
+    @ManyToOne
+    private Cliente dono;
     
-    public Animal(int id_animal, String nome, String especie, String raca, int idade, char sexo){
+    public Animal(int id_animal, String nome, String especie, String raca, int idade, char sexo, Cliente dono){
         this.id_animal = id_animal;
         this.nome_animal = nome;
         this.especie = especie;
         this.raca = raca;
         this.idade = idade;
         this.sexo = sexo;
+        this.dono = dono;
         
     }
     @Deprecated
@@ -134,6 +138,20 @@ public class Animal{
      */
     public void setSexo(char sexo) {
         this.sexo = sexo;
+    }
+
+    /**
+     * @return the dono
+     */
+    public Cliente getDono() {
+        return dono;
+    }
+
+    /**
+     * @param dono the dono to set
+     */
+    public void setDono(Cliente dono) {
+        this.dono = dono;
     }
     
     

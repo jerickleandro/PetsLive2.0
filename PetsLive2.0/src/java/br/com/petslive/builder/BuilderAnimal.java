@@ -6,6 +6,7 @@
 package br.com.petslive.builder;
 
 import br.com.petslive.negocio.Animal;
+import br.com.petslive.negocio.Cliente;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -22,6 +23,7 @@ public class BuilderAnimal {
     private String raca;
     private int idade;
     private char sexo;
+    private Cliente dono;
     
     @Deprecated
     public BuilderAnimal(){}
@@ -112,7 +114,21 @@ public class BuilderAnimal {
     }
     
    public Animal builderAnimal(){
-       return new Animal(this.id_animal, this.nome_animal, this.especie, this.raca, this.idade, this.sexo);
+       return new Animal(this.id_animal, this.nome_animal, this.especie, this.raca, this.idade, this.sexo, this.dono);
    } 
+
+    /**
+     * @return the dono
+     */
+    public Cliente getDono() {
+        return dono;
+    }
+
+    /**
+     * @param dono the dono to set
+     */
+    public void setDono(Cliente dono) {
+        this.dono = dono;
+    }
     
 }

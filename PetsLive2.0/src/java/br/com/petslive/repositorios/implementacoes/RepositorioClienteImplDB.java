@@ -5,7 +5,8 @@
  */
 package br.com.petslive.repositorios.implementacoes;
 
-import br.com.petslive.negocio.Animal;
+
+import br.com.petslive.negocio.Cliente;
 import br.com.petslive.repositorios.interfaces.RepositorioGenerico;
 import br.edu.ifpe.infraestrutura.dao.DaoManagerHiber;
 import java.util.List;
@@ -14,36 +15,38 @@ import java.util.List;
  *
  * @author Erick
  */
-public class RepositorioAnimalImplDB implements RepositorioGenerico<Animal, Integer>{
-    DaoManagerHiber dao = DaoManagerHiber.getInstance(); 
+public class RepositorioClienteImplDB implements RepositorioGenerico<Cliente, Integer> {
+    DaoManagerHiber dao = DaoManagerHiber.getInstance();
+    
     
     
     @Override
-    public void inserir(Animal t) {
+    public void inserir(Cliente t) {
         dao.persist(t);
     }
 
     @Override
-    public void alterar(Animal t) throws Exception{
+    public void alterar(Cliente t) throws Exception {
         dao.update(t);
     }
 
     @Override
-    public Animal recuperar(Integer g) {
+    public Cliente recuperar(Integer g) {
         try{
-        return ((Animal)dao.recover("from Animal where id_animal="+g).get(0));
+        return ((Cliente)dao.recover("from Cliente where id_cliente="+g).get(0));
         }catch(IndexOutOfBoundsException  ex){
             return null;
         }
     }
-    
-    public void deletar(Animal t){
+
+    @Override
+    public void deletar(Cliente t) {
         dao.delete(t);
     }
 
     @Override
-    public List<Animal> listarTodos() {
-        return dao.recover("from Animal");
+    public List<Cliente> listarTodos() {
+        return dao.recover("from Cliente");
     }
     
 }
